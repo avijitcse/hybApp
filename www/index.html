@@ -45,8 +45,8 @@
             
             $.get("http://plentyofcurry.com/apps/api/latlong.php",
             {
-              lat: latitude,
-              long: longitude
+              lat: position.coords.latitude,
+              long: position.coords.longitude
             },
             function(data,status){
                 alert("Data: " + data + "\nStatus: " + status);
