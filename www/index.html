@@ -42,7 +42,7 @@
             x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
             
             //Call Service
-            /*
+            
             $.get("http://plentyofcurry.com/apps/api/latlong.php",
             {
               lat: latitude,
@@ -51,7 +51,7 @@
             function(data,status){
                 alert("Data: " + data + "\nStatus: " + status);
             });
-            */
+            
             //alert("Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude);
         }
         
@@ -103,9 +103,10 @@
             
             //Call Service
             //$.post("http://plentyofcurry.com/apps/api/imagerecive.php",
-            $.post("http://10.227.94.109:8888/DelServ/imagerecive.php",
+            //$.post("http://10.227.94.109:8888/DelServ/imagerecive.php",
+            $.post("http://plentyofcurry.com/apps/api/imagerecive.php",
             {
-              imagestr: imgDatas              
+              imagestr: imageURI              
             },
             function(data,status){
                 alert("Data: " + data + "\nStatus: " + status);
