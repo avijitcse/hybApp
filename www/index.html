@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Capture Image</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>        
+    <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf-8">		
+        var pictureSource;   
+        var destinationType; 
+        var x = document.getElementById("demo");
+        $(document).bind('deviceready', function(){
+            pictureSource=navigator.camera.PictureSourceType;
+            destinationType=navigator.camera.DestinationType;            
+            
+            getLocation();
+        });
+        
+        function getLocation() {
+            alert("Inside getLocation");
+            if (navigator.geolocation) {
+                alert("Inside getLocation if");
+                navigator.geolocation.getCurrentPosition(showPosition, showError, { maximumAge: 3000, timeout: 10000, enableHighAccuracy: true });
+                alert("navigator.geolocation.getCurrentPosition");
+            } else { 
+                alert("Inside getLocation else");
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+        
+        function showPosition(position) {
+            alert("Inside showPosition");
+            x.innerHTML = "Latitude: " + position.coords.latitude + 
+            "<br>Longitude: " + position.coords.longitude;
+            alert("Latitude: " + position.coords.latitude + 
+            "<br>Longitude: " + position.coords.longitude);
+        }
+        
+        function showError(error) {
+            alert(JSON.stringify(error));
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    x.innerHTML = "An unknown error occurred."
+                    break;
+            }
+        }
+        
+        function getPhoto() 
+        {
+            navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 100, 
+            destinationType: destinationType.DATA_URL,
+            sourceType: pictureSource.PHOTOLIBRARY, targetWidth: 100,
+  targetHeight: 100,encodingType: Camera.EncodingType.JPEG });
+        }
+        
+        function onPhotoURISuccess(imageURI) 
+        {
+            alert(imageURI);
+            var largeImage = document.getElementById('largeImage');
+            largeImage.style.display = 'block';
+            largeImage.src = imageURI;
+            
+            var imageActual = document.getElementById('myImage');
+            var imgDatas = "data:image/jpeg;base64," + imageURI;
+            
+            alert(imgDatas);
+            console.log(imgDatas);
+            imageActual.src = imgDatas;
+            
+        }
+        
+        function onFail(message) 
+        {
+            alert('Failed because: ' + message);
+        }
+        
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="a">
+
+        <div data-role="content">
+        <button onclick="getPhoto();">From Gallery!!</button>
+        <div id="largeImage"></div>
+        <p id="demo"></p>
+        <img src id="myImage" height="100"/>
+        </div>
+        
+        </div>
+    </body>
+</html>
