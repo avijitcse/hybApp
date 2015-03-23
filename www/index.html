@@ -11,7 +11,7 @@
         var pictureSource;   
         var destinationType; 
         var x;
-		
+	var frameH, frameW;	
 		
 
         $(document).bind('deviceready', function(){
@@ -19,6 +19,9 @@
             destinationType=navigator.camera.DestinationType;                        
             getLocation();
 			//window.open('http://plentyofcurry.com/apps','_self');
+	    frameH = document.documentElement.clientHeight;
+	    frameW = document.documentElement.clientWidth;
+	    alert(frameW + "x" + frameH);
         });
         
         function getLocation() {
