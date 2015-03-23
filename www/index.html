@@ -14,14 +14,18 @@
 	var frameH, frameW;	
 		
 
+        $(document).ready(function(){
+		frameH = document.documentElement.clientHeight;
+		frameW = document.documentElement.clientWidth;			
+		$("#guestFrame1").height(frameH);
+		$("#guestFrame1").width(frameW);
+	});
+		
         $(document).bind('deviceready', function(){
             pictureSource=navigator.camera.PictureSourceType;
             destinationType=navigator.camera.DestinationType;                        
             getLocation();
 			//window.open('http://plentyofcurry.com/apps','_self');
-	    frameH = document.documentElement.clientHeight;
-	    frameW = document.documentElement.clientWidth;
-	    alert(frameW + "x" + frameH);
         });
         
         function getLocation() {
@@ -165,7 +169,7 @@
 		
 		
 			
-			<iframe id="guestFrame1" name="guestFrame1" width="100%" height="100%" frameborder="0" src="http://plentyofcurry.com/apps" scrolling="no"></iframe>
+			<iframe id="guestFrame1" name="guestFrame1" frameborder="0" src="http://plentyofcurry.com/apps" scrolling="no"></iframe>
 				
         <!--<button onclick="getPhoto();">From Gallery!!</button>
 		<button onclick="capturePhoto();">Capture Photo</button>
