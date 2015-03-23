@@ -35,11 +35,23 @@
         
         function showPosition(position) {
             alert("Inside showPosition");
-			alert(JSON.stringify(position));
-			alert(position.coords.latitude);
-			alert(position.coords.longitude);
+			//alert(JSON.stringify(position));
+			//alert(position.coords.latitude);
+			//alert(position.coords.longitude);
 			x = document.getElementById("demo");
             x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+            
+            //Call Service
+            /*
+            $.get("http://plentyofcurry.com/apps/api/latlong.php",
+            {
+              lat: latitude,
+              long: longitude
+            },
+            function(data,status){
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+            */
             //alert("Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude);
         }
         
@@ -88,6 +100,16 @@
             alert(imgDatas);
             console.log(imgDatas);
             imageActual.src = imgDatas;
+            
+            //Call Service
+            //$.post("http://plentyofcurry.com/apps/api/imagerecive.php",
+            $.post("http://10.227.94.109:8888/DelServ/imagerecive.php",
+            {
+              imagestr: imgDatas              
+            },
+            function(data,status){
+                alert("Data: " + data + "\nStatus: " + status);
+            });
             
         }
         
