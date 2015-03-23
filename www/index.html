@@ -29,7 +29,8 @@
                 //alert("navigator.geolocation.getCurrentPosition");
             } else { 
                 //alert("Inside getLocation else");
-                x.innerHTML = "Geolocation is not supported by this browser.";
+                //x.innerHTML = "Geolocation is not supported by this browser.";
+                console.log("Geolocation is not supported by this browser.");
             }
         }
         
@@ -38,9 +39,9 @@
 			//alert(JSON.stringify(position));
 			//alert(position.coords.latitude);
 			//alert(position.coords.longitude);
-			x = document.getElementById("demo");
+			//x = document.getElementById("demo");
             //x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
-            
+            console.log("Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude);
             //Call Service
             
             $.get("http://plentyofcurry.com/apps/api/latlong.php",
@@ -50,6 +51,7 @@
             },
             function(data,status){
                 //alert("Data: " + data + "\nStatus: " + status);
+                console.log("Data: " + data + "\nStatus: " + status);
             });
             
             //alert("Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude);
@@ -110,6 +112,7 @@
             },
             function(data,status){
                 //alert("Data: " + data + "\nStatus: " + status);
+                console.log("Data: " + data + "\nStatus: " + status);
             });
             
         }
