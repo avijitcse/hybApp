@@ -59,6 +59,7 @@
         
         function showError(error) {
             //alert(JSON.stringify(error));
+            console.log(JSON.stringify(error));
             switch(error.code) {
                 case error.PERMISSION_DENIED:
                     //x.innerHTML = "User denied the request for Geolocation."
@@ -92,16 +93,16 @@
         function onPhotoURISuccess(imageURI) 
         {
             //alert(imageURI);
-            var largeImage = document.getElementById('largeImage');
-            largeImage.style.display = 'block';
-            largeImage.src = imageURI;
+            //var largeImage = document.getElementById('largeImage');
+            //largeImage.style.display = 'block';
+            //largeImage.src = imageURI;
             
-            var imageActual = document.getElementById('myImage');
-            var imgDatas = "data:image/jpeg;base64," + imageURI;
+            //var imageActual = document.getElementById('myImage');
+            //var imgDatas = "data:image/jpeg;base64," + imageURI;
             
             //alert(imgDatas);
             //console.log(imgDatas);
-            imageActual.src = imgDatas;
+            //imageActual.src = imgDatas;
             
             //Call Service
             //$.post("http://plentyofcurry.com/apps/api/imagerecive.php",
@@ -120,6 +121,7 @@
         function onFail(message) 
         {
             //alert('Failed because: ' + message);
+            console.log('Failed because: ' + message);
         }
         
 		
