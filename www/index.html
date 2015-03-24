@@ -30,7 +30,7 @@
             var networkState = navigator.connection.type;
             if(networkState == Connection.NONE){
             	console.log("Sorry, you are offline.");
-            	navigator.notification.alert("Sorry, you are offline. Please check your network connection and try again.", function() {navigator.app.exitApp();}, "Offline!");
+            	navigator.notification.alert("Sorry, you are offline. Please check your network connection and try again.", alertDismissed, "Offline!");
             	//alert("Sorry, you are offline.");
                 //navigator.app.exitApp();
             } else {
@@ -41,6 +41,10 @@
             getLocation();
 			//window.open('http://plentyofcurry.com/apps','_self');
         });
+        
+        function alertDismissed() {
+        	navigator.app.exitApp();
+        }
         
         function getLocation() {
             //alert("Inside getLocation");
