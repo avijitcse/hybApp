@@ -24,11 +24,11 @@
         $(document).bind('deviceready', function(){
             //Network Status
             var networkState = navigator.connection.type;
-            alert(networkState);
-            alert(Connection.NONE);
             if(networkState == Connection.NONE){
-            	alert("App can't work in offline mode");
-                console.log("App can't work in offline mode");
+            	navigator.notification.alert("Sorry, you are offline.", function() {}, "Offline!");
+            	alert("Sorry, you are offline.");
+                console.log("Sorry, you are offline.");
+                navigator.app.exitApp();
             } else {
                 console.log(networkState);
             }
