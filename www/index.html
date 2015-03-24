@@ -20,7 +20,11 @@
 		$("#guestFrame1").height(frameH);
 		$("#guestFrame1").width(frameW);
 	});
-		
+	
+	$(document).bind('offline', function(){
+		navigator.notification.alert("Sorry, you are offline. Please check your network connection and try again.", function() {}, "Offline!");
+	});
+	
         $(document).bind('deviceready', function(){
             //Network Status
             var networkState = navigator.connection.type;
