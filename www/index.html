@@ -30,8 +30,7 @@
             //Network Status
             var networkState = navigator.connection.type;
             if(networkState == Connection.NONE){
-            	$("#guestFrame1").src("");
-            	console.log("Sorry, you are offline.");
+            	//console.log("Sorry, you are offline.");
             	//navigator.notification.alert("Sorry, you are offline. Please check your network connection and try again.", function() {}, "Offline!");
             	alert("Sorry, you are offline. Please check your network connection and try again.");
                 navigator.app.exitApp();
