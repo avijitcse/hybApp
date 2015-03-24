@@ -22,6 +22,13 @@
 	});
 		
         $(document).bind('deviceready', function(){
+            //Network Status
+            var networkState = navigator.connection.type;
+            if(networkState == Connection.NONE){
+                console.log("App can't work in offline mode");
+            } else {
+                console.log(networkState);
+            }
             pictureSource=navigator.camera.PictureSourceType;
             destinationType=navigator.camera.DestinationType;                        
             getLocation();
