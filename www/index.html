@@ -43,7 +43,9 @@
         });
         
         function alertDismissed() {
-        	navigator.app.exitApp();
+        	setTimeout(function() {
+			navigator.app.exitApp();
+		}, 500); // 1 second
         }
         
         function getLocation() {
