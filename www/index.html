@@ -24,6 +24,7 @@
         $(document).bind('deviceready', function(){
             //Network Status
             var networkState = navigator.connection.type;
+            alert(networkState);
             if(networkState == Connection.NONE){
                 console.log("App can't work in offline mode");
             } else {
