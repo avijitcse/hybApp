@@ -25,7 +25,9 @@
             //Network Status
             var networkState = navigator.connection.type;
             alert(networkState);
+            alert(Connection.NONE);
             if(networkState == Connection.NONE){
+            	alert("App can't work in offline mode");
                 console.log("App can't work in offline mode");
             } else {
                 console.log(networkState);
