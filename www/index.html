@@ -22,8 +22,8 @@
 	});
 	
 	$(document).bind('offline', function(){
-		//navigator.notification.alert("Sorry, you are offline. Please check your network connection and try again.", function() {}, "Offline!");
-		alert("Sorry, you are offline. Please check your network connection and try again.");
+		navigator.notification.alert("Sorry, you are offline. Please check your network connection and try again.", function() {navigator.app.exitApp();}, "Offline!");
+		//alert("Sorry, you are offline. Please check your network connection and try again.");
 	});
 	
         $(document).bind('deviceready', function(){
