@@ -12,6 +12,7 @@
         var destinationType; 
         var x;
 	var frameH, frameW;	
+        var gblPageUrl;
 		
 
         $(document).ready(function(){
@@ -70,9 +71,10 @@
             {
               lat: position.coords.latitude,
               long: position.coords.longitude
+              deviceid: device.uuid
             },
             function(data,status){
-                //alert("Data: " + data + "\nStatus: " + status);
+                alert("Data: " + data + "\nStatus: " + status);
                 console.log("Data: " + data + "\nStatus: " + status);
             });
             
@@ -127,14 +129,16 @@
             //imageActual.src = imgDatas;
             
             //Call Service
+            alert("pageurl: "+gblPageUrl);
             //$.post("http://plentyofcurry.com/apps/api/imagerecive.php",
             //$.post("http://10.227.94.109:8888/DelServ/imagerecive.php",
             $.post("http://plentyofcurry.com/apps/api/imagerecive.php",
             {
-              imagestr: imageURI              
+              imagestr: imageURI,
+              pageurl: gblPageUrl
             },
             function(data,status){
-                //alert("Data: " + data + "\nStatus: " + status);
+                alert("Data: " + data + "\nStatus: " + status);
                 console.log("Data: " + data + "\nStatus: " + status);
             });
             
@@ -155,6 +159,8 @@
 			function onMessage1(messageEvent) {  
 				Porthole.trace("onMessage1");
 				if (messageEvent.origin == "http://" + guestDomain) {
+                                        gblPageUrl = messageEvent.data["pageurl"];
+                                        alert(gblPageUrl);
 					if (messageEvent.data["color"]) {
 						getPhoto();
 					} 
